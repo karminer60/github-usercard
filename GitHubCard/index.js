@@ -51,6 +51,54 @@ const followersArray = [];
     </div>
 */
 
+function cardMaker(cardAttr){
+  const { name, username, location, address, followers, following, bio } = cardAttr  
+
+  const card = document.createElement('div')
+  const image = document.createElement('img')
+  const cardInfo = document.createElement('div')
+  const nameUser = document.createElement('h3')
+  const usernameId = document.createElement('p')
+  const locationPlace = document.createElement('p')
+  const profile = document.createElement('p')
+  const address = document.createElement('a')
+  const followers = document.createElement('p')
+  const following= document.createElement('p')
+  const bio = document.createElement('p')
+
+
+  card.appendChild(image)
+  card.appendChild(cardInfo)
+  cardInfo.appendChild(nameUser)
+  cardInfo.appendChild(usernameId)
+  cardInfo.appendChild(locationPlace)
+  cardInfo.appendChild(profile)
+  cardInfo.appendChild(followers)
+  cardInfo.appendChild(following)
+  cardInfo.appendChild(bio)
+  profile.appendChild(address)
+  
+  
+
+  // TASK 7- Add proper class names to our elements (See index.html for reference)
+  card.classList.add('card')
+  cardInfo.classList.add('card-info')
+  nameUser.classList.add('name')
+  usernameId.classList.add('username')
+  
+
+
+  // TASK 8- Set text content using arguments as raw material
+  //  and also using the open and close arrows imported at the top of the file
+  nameUser.textContent = name
+  panelContent.textContent = content
+  usernameId.textContent = username
+  locationPlace.textContent = location
+  
+
+
+}
+
 /*
   List of LS Instructors Github username's:
     tetondan
