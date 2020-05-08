@@ -66,7 +66,7 @@ const followersArray = [];
 */
 
 function cardMaker(cardAttr){
-  const { avatar_url, name, login, location, url, followers, following, bio } = cardAttr  
+  const { avatar_url, name, login, location, html_url, followers, following, bio } = cardAttr  
 
   const card = document.createElement('div')
   const imageS = document.createElement('img')
@@ -106,8 +106,8 @@ function cardMaker(cardAttr){
   imageS.src = avatar_url
   usernameId.textContent = login
   locationPlace.textContent = location
-  locationPlace.textContent = location
-  addressLink.textContent = url
+  addressLink.textContent = 'Github link' 
+  addressLink.href= html_url
   followersCount.textContent = 'Followers: ' + followers
   followingCount.textContent = 'Following: ' + following
   bioDesc.textCount = bio
