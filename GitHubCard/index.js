@@ -4,7 +4,21 @@
     https://api.github.com/users/<your name>
 */
 
-axios.get('https://api.github.com/users/karminer60')
+  axios.get('https://api.github.com/users/karminer60')
+    .then(response => {
+      const dataKarina = response.data;
+      const cards = document.querySelector('.cards');
+      const card = cardMaker(dataKarina);
+      cards.appendChild(card);
+    })
+    .catch(error => {
+      console.log('Get data failed');
+    })
+    .finally(() => {
+      console.log('done');
+    })
+
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -52,52 +66,63 @@ const followersArray = [];
 */
 
 function cardMaker(cardAttr){
-  const { name, username, location, address, followers, following, bio } = cardAttr  
+  const { avatar_url, name, login, location, url, followers, following, bio } = cardAttr  
 
   const card = document.createElement('div')
-  const image = document.createElement('img')
+  const imageS = document.createElement('img')
   const cardInfo = document.createElement('div')
   const nameUser = document.createElement('h3')
   const usernameId = document.createElement('p')
   const locationPlace = document.createElement('p')
   const profile = document.createElement('p')
-  const address = document.createElement('a')
-  const followers = document.createElement('p')
-  const following= document.createElement('p')
-  const bio = document.createElement('p')
+  const addressLink = document.createElement('a')
+  const followersCount = document.createElement('p')
+  const followingCount = document.createElement('p')
+  const bioDesc = document.createElement('p')
 
 
-  card.appendChild(image)
+  card.appendChild(imageS)
   card.appendChild(cardInfo)
   cardInfo.appendChild(nameUser)
   cardInfo.appendChild(usernameId)
   cardInfo.appendChild(locationPlace)
   cardInfo.appendChild(profile)
-  cardInfo.appendChild(followers)
-  cardInfo.appendChild(following)
-  cardInfo.appendChild(bio)
-  profile.appendChild(address)
+  cardInfo.appendChild(followersCount)
+  cardInfo.appendChild(followingCount)
+  cardInfo.appendChild(bioDesc)
+  profile.appendChild(addressLink)
   
   
 
-  // TASK 7- Add proper class names to our elements (See index.html for reference)
+  
   card.classList.add('card')
   cardInfo.classList.add('card-info')
   nameUser.classList.add('name')
   usernameId.classList.add('username')
   
-
-
-  // TASK 8- Set text content using arguments as raw material
-  //  and also using the open and close arrows imported at the top of the file
-  nameUser.textContent = name
-  panelContent.textContent = content
-  usernameId.textContent = username
-  locationPlace.textContent = location
   
+ 
+  nameUser.textContent = name
+  imageS.src = avatar_url
+  usernameId.textContent = login
+  locationPlace.textContent = location
+  locationPlace.textContent = location
+  addressLink.textContent = url
+  followersCount.textContent = 'Followers: ' + followers
+  followingCount.textContent = 'Following: ' + following
+  bioDesc.textCount = bio
 
+
+
+  
+return card;
 
 }
+
+
+
+
+
 
 /*
   List of LS Instructors Github username's:
